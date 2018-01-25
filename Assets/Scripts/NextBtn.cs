@@ -16,7 +16,8 @@ public class NextBtn : MonoBehaviour {
     {
         if(thisPage)
         thisPage.SetActive(false);
-        nextPage.SetActive(true);
+        if (nextPage)
+            nextPage.SetActive(true);
     }
 
 

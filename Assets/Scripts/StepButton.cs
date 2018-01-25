@@ -14,19 +14,19 @@ public class StepButton : MonoBehaviour {
         switch (gameObject.name)
         {
             case "Button (1)":
-                GetComponent<Button>().onClick.AddListener(ClickBtn1);
+                GetComponent<Toggle>().onValueChanged.AddListener(ClickBtn1);
                 sizeStepBtnLong = GetComponent<Image>().rectTransform.sizeDelta;
                 posStepBtnLong=GetComponent<Image>().rectTransform.anchoredPosition.x;
                 //print("widthStepBtnLong" + widthStepBtnLong + "ClassificationSteps.classificationSteps.btn1.GetComponent<Image>().rectTransform.position.x" + GetComponent<Image>().rectTransform.anchoredPosition.x);
                 break;
             case "Button (2)":
-                GetComponent<Button>().onClick.AddListener(ClickBtn2);
+                GetComponent<Toggle>().onValueChanged.AddListener(ClickBtn2);
                 sizeStepBtn=GetComponent<Image>().rectTransform.sizeDelta;
                 posStepBtn = GetComponent<Image>().rectTransform.anchoredPosition.x;
                 //gameObject.SetActive(false);
                 break;
             case "Button (3)":
-                GetComponent<Button>().onClick.AddListener(ClickBtn3);
+                GetComponent<Toggle>().onValueChanged.AddListener(ClickBtn3);
                 //gameObject.SetActive(false);
                 break;
 
@@ -35,23 +35,25 @@ public class StepButton : MonoBehaviour {
 
 
 
-    public  void ClickBtn1()
+    public  void ClickBtn1(bool isTrue)
     {
+        if (!isTrue)
+            return;
         switch(ToStepNextBtn.threeMenu)
         {
             case 1:
             ClassificationSteps.classificationSteps.step1.SetActive(true);
             ClassificationSteps.classificationSteps.step2.SetActive(false);
             ClassificationSteps.classificationSteps.step3.SetActive(false);
-            ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtnLong;
-            ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtn;
-            ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtn;
-            float y = ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.anchoredPosition.y;
-            float y1 = ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.anchoredPosition.y;
-            float y2 = ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.anchoredPosition.y;
-            ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtnLong, y);
-            ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtn, y1);
-            ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtn, y2);
+            //ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtnLong;
+            //ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtn;
+            //ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.sizeDelta = sizeStepBtn;
+            //float y = ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.anchoredPosition.y;
+            //float y1 = ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.anchoredPosition.y;
+            //float y2 = ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.anchoredPosition.y;
+            //ClassificationSteps.classificationSteps.lineBtn1.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtnLong, y);
+            //ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtn, y1);
+            //ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Image>().rectTransform.anchoredPosition = new Vector2(posStepBtn, y2);
                 break;
             case 2:
             RegressionSteps.regressionSteps.step1.SetActive(true);
@@ -84,8 +86,10 @@ public class StepButton : MonoBehaviour {
         }
         }
 
-    void ClickBtn2()
+    void ClickBtn2(bool isTrue)
     {
+        if (!isTrue)
+            return;
         switch (ToStepNextBtn.threeMenu)
         {
             case 1:
@@ -144,8 +148,10 @@ public class StepButton : MonoBehaviour {
 
     }
 
-    void ClickBtn3()
+    void ClickBtn3(bool isTrue)
     {
+        if (!isTrue)
+            return;
         switch (ToStepNextBtn.threeMenu)
         {
             case 1:

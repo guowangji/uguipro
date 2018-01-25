@@ -39,8 +39,9 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     {
         if (!notDragOut)
         {
-            ClassificationSteps.classificationSteps.lineBtn3.SetActive(false);
-            GetComponentInChildren<Text>().text = "";
+            //ClassificationSteps.classificationSteps.lineBtn3.SetActive(false);
+            ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable=false;
+           GetComponentInChildren<Text>().text = "";
             if(DraggableObjectScene.predictionSave)
             DraggableObjectScene.predictionSave.SetActive(true);
         }

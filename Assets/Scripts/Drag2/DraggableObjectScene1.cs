@@ -87,7 +87,7 @@ public class DraggableObjectScene1 : MonoBehaviour, IDragHandler, IPointerDownHa
                     predictionSave.SetActive(true);
                 predictionSave = gameObject;
                 if(ToStepNextBtn.threeMenu==1)
-                ClassificationSteps.classificationSteps.lineBtn3.SetActive(true);
+                ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable = true;
                 else if (ToStepNextBtn.threeMenu == 2)
                 RegressionSteps.regressionSteps.lineBtn3.SetActive(true);
         break;

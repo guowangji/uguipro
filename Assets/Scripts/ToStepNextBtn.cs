@@ -16,8 +16,8 @@ public class ToStepNextBtn : MonoBehaviour {
         {
             case 1:
                 ClassificationSteps.classificationSteps.lineBtn1.SetActive(true);
-            ClassificationSteps.classificationSteps.lineBtn2.SetActive(false);
-            ClassificationSteps.classificationSteps.lineBtn3.SetActive(false);
+            //ClassificationSteps.classificationSteps.lineBtn2.SetActive(false);
+            //ClassificationSteps.classificationSteps.lineBtn3.SetActive(false);
             ClassificationSteps.classificationSteps.step1.SetActive(true);
             ClassificationSteps.classificationSteps.step2.SetActive(false);
             ClassificationSteps.classificationSteps.step3.SetActive(false);
@@ -25,8 +25,8 @@ public class ToStepNextBtn : MonoBehaviour {
                 break;
             case 2:
             RegressionSteps.regressionSteps.lineBtn1.SetActive(true);
-            RegressionSteps.regressionSteps.lineBtn2.SetActive(false);
-            RegressionSteps.regressionSteps.lineBtn3.SetActive(false);
+            //RegressionSteps.regressionSteps.lineBtn2.SetActive(false);
+            //RegressionSteps.regressionSteps.lineBtn3.SetActive(false);
             RegressionSteps.regressionSteps.step1.SetActive(true);
             RegressionSteps.regressionSteps.step2.SetActive(false);
             RegressionSteps.regressionSteps.step3.SetActive(false);
@@ -34,8 +34,8 @@ public class ToStepNextBtn : MonoBehaviour {
                 break;
             case 3:
                 ClusteringSteps.clusteringSteps.lineBtn1.SetActive(true);
-                ClusteringSteps.clusteringSteps.lineBtn2.SetActive(false);
-                ClusteringSteps.clusteringSteps.lineBtn3.SetActive(false);
+                //ClusteringSteps.clusteringSteps.lineBtn2.SetActive(false);
+                //ClusteringSteps.clusteringSteps.lineBtn3.SetActive(false);
                 ClusteringSteps.clusteringSteps.step1.SetActive(true);
                 ClusteringSteps.clusteringSteps.step2.SetActive(false);
                 ClusteringSteps.clusteringSteps.step3.SetActive(false);

@@ -52,7 +52,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
                     switch (ToStepNextBtn.threeMenu)
                     {
                         case 1:
-                            ClassificationSteps.classificationSteps.lineBtn2.SetActive(true);
+                            ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Toggle>().interactable = true;
                             break;
                         case 2:
                             RegressionSteps.regressionSteps.lineBtn2.SetActive(true);
@@ -72,7 +72,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
                     switch (ToStepNextBtn.threeMenu)
                     {
                         case 1:
-                            ClassificationSteps.classificationSteps.lineBtn2.SetActive(true);
+                            ClassificationSteps.classificationSteps.lineBtn2.GetComponent<Toggle>().interactable = true;
                             break;
                         case 2:
                             RegressionSteps.regressionSteps.lineBtn2.SetActive(true);
@@ -87,7 +87,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
                     predictionSave.SetActive(true);
                 predictionSave = gameObject;
                 if(ToStepNextBtn.threeMenu==1)
-                ClassificationSteps.classificationSteps.lineBtn3.SetActive(true);
+                ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable = true;
                 else if (ToStepNextBtn.threeMenu == 2)
                 RegressionSteps.regressionSteps.lineBtn3.SetActive(true);
         break;

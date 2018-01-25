@@ -7,13 +7,15 @@ public class MainMenuThreeBtn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<Button>().onClick.AddListener(ThreeChooseOne);
+        GetComponent<Toggle>().onValueChanged.AddListener(ThreeChooseOne);//AddListener(ThreeChooseOne);
 	}
 	
 
-    void ThreeChooseOne()
+    void ThreeChooseOne(bool isSeclet)
     {
-        if(gameObject.name.Equals("Button"))
+        if (!isSeclet)
+            return;
+        if(gameObject.name.Equals("Toggle"))
         ToStepNextBtn.threeMenu = 1;
         else if (gameObject.name.Contains("1"))
         {
