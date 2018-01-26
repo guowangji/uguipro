@@ -6,8 +6,10 @@ public class ClassificationSteps : MonoBehaviour
 {
     public GameObject step1, step2, step3;//页面
     public GameObject lineBtn1, lineBtn2, lineBtn3;//按钮
-    public GameObject notice;
+    public GameObject notice, noticeBtns, noticeAxisArea;
+    public GameObject canvas;
     public static ClassificationSteps classificationSteps;
+
     // Use this for initialization
     void Start()
     {

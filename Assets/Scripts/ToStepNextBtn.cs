@@ -16,12 +16,12 @@ public class ToStepNextBtn : MonoBehaviour {
         {
             case 1:
                 ClassificationSteps.classificationSteps.lineBtn1.SetActive(true);
-            //ClassificationSteps.classificationSteps.lineBtn2.SetActive(false);
-            //ClassificationSteps.classificationSteps.lineBtn3.SetActive(false);
             ClassificationSteps.classificationSteps.step1.SetActive(true);
             ClassificationSteps.classificationSteps.step2.SetActive(false);
             ClassificationSteps.classificationSteps.step3.SetActive(false);
             ClassificationSteps.classificationSteps.notice.SetActive(true);
+                ClassificationSteps.classificationSteps.noticeBtns.transform.parent = ClassificationSteps.classificationSteps.notice.transform.Find("noticeTopPlane");
+
                 break;
             case 2:
             RegressionSteps.regressionSteps.lineBtn1.SetActive(true);
