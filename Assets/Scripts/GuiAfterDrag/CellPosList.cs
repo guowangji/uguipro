@@ -22,7 +22,7 @@ public class CellPosList : MonoBehaviour {
     IEnumerator waitme()
     {
         yield return new WaitForSeconds(0.5f);
-        if (gameObject.name.Equals("GridChild2"))//|| gameObject.name.Equals("GridChild (2)")
+        if (gameObject.name.Equals("GridChild2"))
         {
             //NeuralNetwork.cellListDic[0].cellDic[0]
             foreach (var item1 in NeuralNetwork.cellListDic[0].cellDic)
@@ -32,15 +32,26 @@ public class CellPosList : MonoBehaviour {
                 {
                     Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
                     cellLine.SetParent(item2.Value.transform);
-                    LineRenderer line= cellLine.GetComponent<LineRenderer>();
-                        line.positionCount = 2;
-                    //设置线的宽度
-                    line.startWidth = 0.1f;
-                    line.endWidth = 0.1f;
-                    line.SetPosition(0, item1.Value.cellPos);
-                    line.SetPosition(1, item2.Value.cellPos);
 
-                    //print("pos" + item2.Value.cellPos);
+                    cellLine.gameObject.GetComponent<CellLine>().start = item1.Value.transform.Find("cell").gameObject;
+                    cellLine.gameObject.GetComponent<CellLine>().end = item2.Value.transform.Find("cell").gameObject;
+                }
+            }
+        }
+        if (gameObject.name.Equals("GridChild3"))
+        {
+            //NeuralNetwork.cellListDic[0].cellDic[0]
+            foreach (var item1 in NeuralNetwork.cellListDic[1].cellDic)
+            {
+
+                foreach (var item2 in cellDic)
+                {
+                    Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
+                    cellLine.SetParent(item2.Value.transform);
+
+                    cellLine.gameObject.GetComponent<CellLine>().start = item1.Value.transform.Find("cell").gameObject;
+                    cellLine.gameObject.GetComponent<CellLine>().end = item2.Value.transform.Find("cell").gameObject;
+
                 }
             }
         }
