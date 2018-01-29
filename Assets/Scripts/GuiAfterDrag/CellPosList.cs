@@ -27,10 +27,12 @@ public class CellPosList : MonoBehaviour {
             //NeuralNetwork.cellListDic[0].cellDic[0]
             foreach (var item1 in NeuralNetwork.cellListDic[0].cellDic)
             {
-                CellLine._posList.Add(item1.Value.cellPos);
+                
                 foreach (var item2 in cellDic)
                 {
+                    CellLine._posList.Add(item1.Value.cellPos);
                     CellLine._posList.Add(item2.Value.cellPos);
+                    //print("pos" + item2.Value.cellPos);
                 }
             }
         }

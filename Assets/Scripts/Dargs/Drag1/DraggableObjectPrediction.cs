@@ -33,12 +33,15 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
         if (isRect)
         {
             //设置图片的ugui坐标与鼠标的ugui坐标保持不变
-            transform.GetComponent<RectTransform>().anchoredPosition = offset + uguiPos;
+            transform.GetComponent<RectTransform>().anchoredPosition =  uguiPos;
+            //transform.GetComponent<RectTransform>().anchoredPosition = offset + uguiPos;
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        GetComponent<BoxCollider2D>().size = new Vector2(150, 40);
+
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
         bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(ClassificationSteps.classificationSteps.GetComponent<RectTransform>(), mouseDown, eventData.enterEventCamera, out mouseUguiPos);
@@ -47,8 +50,6 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
             //计算图片中心和鼠标点的差值
             offset = transform.GetComponent<RectTransform>().anchoredPosition - mouseUguiPos;
         }
-
-
         myPivot = transform.GetComponent<RectTransform>().pivot;
         myPos = transform.GetComponent<RectTransform>().position;
 
@@ -66,7 +67,6 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
             if(DraggableObjectScene.predictionSave)
             DraggableObjectScene.predictionSave.SetActive(true);
         }
-
         PointerUp();
     }
 
@@ -108,9 +108,9 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
         //    if (textLast.Equals(GetComponentInChildren<Text>().text))
         //    {
 
-            //        gameObject.SetActive(false);
-            //    }
-            //}
+        //        gameObject.SetActive(false);
+        //    }
+        //}
     }
     
 }
