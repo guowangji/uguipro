@@ -11,6 +11,8 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     Transform btnTopPanel,parentPanel;
     bool notDragOut = true;
 
+    Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
+
     void Start()
     {
         btnTopPanel = transform.parent.parent.Find("btnTopPanel");
@@ -23,16 +25,36 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     {
         GetComponent<RectTransform>().pivot.Set(0, 0);
         transform.position = Input.mousePosition;
+
+        Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
+        Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
+        //和上面类似
+        bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(ClassificationSteps.classificationSteps.GetComponent<RectTransform>(), mouseDrag, eventData.enterEventCamera, out uguiPos);
+        if (isRect)
+        {
+            //设置图片的ugui坐标与鼠标的ugui坐标保持不变
+            transform.GetComponent<RectTransform>().anchoredPosition = offset + uguiPos;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
+        Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
+        bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(ClassificationSteps.classificationSteps.GetComponent<RectTransform>(), mouseDown, eventData.enterEventCamera, out mouseUguiPos);
+        if (isRect)   //如果在
+        {
+            //计算图片中心和鼠标点的差值
+            offset = transform.GetComponent<RectTransform>().anchoredPosition - mouseUguiPos;
+        }
+
+
         myPivot = transform.GetComponent<RectTransform>().pivot;
         myPos = transform.GetComponent<RectTransform>().position;
 
         transform.parent = btnTopPanel;
         //缩小
-        transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        transform.localScale = new Vector3(0.7f, 0.7f, 1f);
     }
 
     public void OnPointerUp(PointerEventData eventData)

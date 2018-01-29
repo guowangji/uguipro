@@ -29,15 +29,11 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
     //Drag事件，设置目标的位置为鼠标的位置
     public void OnDrag(PointerEventData eventData)
     {
-        GetComponent<RectTransform>().pivot.Set(0, 0);
-        transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);//Input.mousePosition;
-
 
         Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
         Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
         //和上面类似
         bool isRect = RectTransformUtility.ScreenPointToLocalPointInRectangle(ClassificationSteps.classificationSteps.GetComponent<RectTransform>(), mouseDrag, eventData.enterEventCamera, out uguiPos);
-
         if (isRect)
         {
             //设置图片的ugui坐标与鼠标的ugui坐标保持不变
