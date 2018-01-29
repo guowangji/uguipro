@@ -33,7 +33,7 @@ public class CellLine : MonoBehaviour {
         lineRenderer.startWidth = 0.1f;
         lineRenderer.endWidth = 0.1f;
 
-        StartCoroutine(waitme());
+        //StartCoroutine(waitme());
     }
 
 
@@ -63,8 +63,6 @@ public class CellLine : MonoBehaviour {
         {
             for (int i = 0; i < _posList.Count - 1; i += 2)
             {
-
-
                 //vBeg = GetComponent<Camera>().WorldToScreenPoint(_posList[i]);
                 //vEnd = GetComponent<Camera>().WorldToScreenPoint(_posList[i + 1]);
                 //GL.PushMatrix();

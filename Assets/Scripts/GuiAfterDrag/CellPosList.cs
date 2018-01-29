@@ -30,8 +30,16 @@ public class CellPosList : MonoBehaviour {
                 
                 foreach (var item2 in cellDic)
                 {
-                    CellLine._posList.Add(item1.Value.cellPos);
-                    CellLine._posList.Add(item2.Value.cellPos);
+                    Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
+                    cellLine.SetParent(item2.Value.transform);
+                    LineRenderer line= cellLine.GetComponent<LineRenderer>();
+                        line.positionCount = 2;
+                    //设置线的宽度
+                    line.startWidth = 0.1f;
+                    line.endWidth = 0.1f;
+                    line.SetPosition(0, item1.Value.cellPos);
+                    line.SetPosition(1, item2.Value.cellPos);
+
                     //print("pos" + item2.Value.cellPos);
                 }
             }

@@ -23,9 +23,6 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     //Drag事件，设置目标的位置为鼠标的位置
     public void OnDrag(PointerEventData eventData)
     {
-        GetComponent<RectTransform>().pivot.Set(0, 0);
-        transform.position = Input.mousePosition;
-
         Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
         Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
         //和上面类似
