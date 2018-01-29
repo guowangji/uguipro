@@ -21,12 +21,12 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
 
     void Update()
     {
-        if (pointerUp&&transform.Find("Dropdown List") && transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta.y!=110)
+        if (pointerUp&&transform.Find("Dropdown List") && transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta.y!=106)
         {
             pointerUp = false;
             Debug.Log("sda" + transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta.y);
             Vector2 size = transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta;
-            size.y = 110;
+            size.y = 106;
             transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta = size;
         }
     }

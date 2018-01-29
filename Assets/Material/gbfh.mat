@@ -3,10 +3,10 @@
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
-  m_ObjectHideFlags: 61
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: neuralNetworkLine
+  m_Name: gbfh
   m_Shader: {fileID: 10762, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -79,5 +79,5 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.08235294, g: 0.73333335, b: 0.5647059, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.6275861, a: 0.392}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

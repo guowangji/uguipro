@@ -10,7 +10,7 @@ public class Line : MonoBehaviour
     public Material mat;
     private Vector3 vBeg;
     private Vector3 vEnd;
-    private static IList<Vector3> _posList = new List<Vector3>();
+    private static IList<Vector3> _postList = new List<Vector3>();
 
     private static bool _isReady = false;
     public static bool isReady
@@ -37,8 +37,8 @@ public class Line : MonoBehaviour
         {
             return;
         }
-        _posList = posList;
-        if (_posList.Count > 1)
+        _postList = posList;
+        if (_postList.Count > 1)
         {
             _isReady = true;
         }
@@ -48,7 +48,7 @@ public class Line : MonoBehaviour
         if (_isReady)
         {
             vBeg = GetComponent<Camera>().WorldToScreenPoint(begin.position);
-            vEnd = GetComponent<Camera>().WorldToScreenPoint(_posList[0]);
+            vEnd = GetComponent<Camera>().WorldToScreenPoint(_postList[0]);
             GL.PushMatrix(); //保存当前Matirx  
             mat.SetPass(0); //刷新当前材质  
             GL.LoadOrtho();//设置pixelMatrix  
@@ -59,10 +59,10 @@ public class Line : MonoBehaviour
             GL.End();
             GL.PopMatrix();//读取之前的Matrix  
 
-            for (int i = 0; i < _posList.Count - 1; ++i)
+            for (int i = 0; i < _postList.Count - 1; ++i)
             {
-                vBeg = GetComponent<Camera>().WorldToScreenPoint(_posList[i]);
-                vEnd = GetComponent<Camera>().WorldToScreenPoint(_posList[i + 1]);
+                vBeg = GetComponent<Camera>().WorldToScreenPoint(_postList[i]);
+                vEnd = GetComponent<Camera>().WorldToScreenPoint(_postList[i + 1]);
                 GL.PushMatrix();
                 mat.SetPass(0);
                 GL.LoadOrtho();
