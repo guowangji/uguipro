@@ -7,7 +7,7 @@ public class NoticeOnenable : MonoBehaviour {
     public int btnNick = 1;
 	// Use this for initialization
 	void Start () {
-        print("aaas"+gameObject.name);
+        //print("aaas"+gameObject.name);
 
         if (btnNick == 1)
         {

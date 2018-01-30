@@ -34,9 +34,20 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
             //transform.GetComponent<RectTransform>().anchoredPosition = offset + uguiPos;
         }
     }
-
-    public void OnPointerDown(PointerEventData eventData)
+    int rightOrLeftMouse = 0;
+        public void OnPointerDown(PointerEventData eventData)
     {
+        //屏蔽左右键一起点击
+        if (rightOrLeftMouse != 0)
+        {
+            rightOrLeftMouse++;
+            return;
+        }
+        if (eventData.currentInputModule.input.GetMouseButtonDown(1) || eventData.currentInputModule.input.GetMouseButtonDown(0))
+        {
+            rightOrLeftMouse++;
+        }
+
         GetComponent<BoxCollider2D>().size = new Vector2(150, 40);
 
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
@@ -57,12 +68,17 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        rightOrLeftMouse --;
         if (!notDragOut)
         {
             ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable=false;
            GetComponentInChildren<Text>().text = "";
             if(DraggableObjectScene.predictionSave)
             DraggableObjectScene.predictionSave.SetActive(true);
+            foreach (Transform child in ClassificationSteps.classificationSteps.step2.transform.Find("DrawPanel"))
+            {
+                child.gameObject.SetActive(false);
+            }
         }
         PointerUp();
     }

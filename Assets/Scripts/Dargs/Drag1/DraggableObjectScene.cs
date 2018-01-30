@@ -9,6 +9,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
     Vector2 myPivot;
     Vector3 myPos;
     Transform btnTopPanel,parentPanel;
+    Sprite saveSprite;
     public static GameObject xSave,ySave,predictionSave;
     string textLast;
     Transform transfLast;
@@ -29,7 +30,11 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
     //Drag事件，设置目标的位置为鼠标的位置
     public void OnDrag(PointerEventData eventData)
     {
-
+        ////屏蔽右键
+        //if (eventData.currentInputModule.input.GetMouseButtonDown(1))
+        //{
+        //    return;
+        //}
         Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
         Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
         //和上面类似
@@ -42,9 +47,18 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
     }
 
 
-
+    int rightOrLeftMouse = 0;
     public void OnPointerDown(PointerEventData eventData)
     {
+        //屏蔽左右键一起点击
+        if(rightOrLeftMouse != 0) { rightOrLeftMouse++; 
+        return;
+        }
+        if (eventData.currentInputModule.input.GetMouseButtonDown(1)||eventData.currentInputModule.input.GetMouseButtonDown(0))
+        {
+            rightOrLeftMouse ++;
+        }
+
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
         //RectTransformUtility.ScreenPointToLocalPointInRectangle()：把屏幕坐标转化成ugui坐标
@@ -59,8 +73,9 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
             offset = transform.GetComponent<RectTransform>().anchoredPosition - mouseUguiPos;
         }
 
-
-
+        saveSprite = GetComponent<Image>().sprite;
+        GetComponent<Image>().sprite = null;
+        GetComponentInChildren<Text>().color = Color.black;
         myPivot = transform.GetComponent<RectTransform>().pivot;
         myPos = transform.GetComponent<RectTransform>().position;
         transform.SetParent(btnTopPanel);
@@ -70,6 +85,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        rightOrLeftMouse --;
         switch (textLast)
         {
             case "TextX-axis":
@@ -139,6 +155,8 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
 
     void PointerUp()
     {
+        GetComponent<Image>().sprite = saveSprite;
+        GetComponentInChildren<Text>().color = Color.white;
         //正常大小
         transform.localScale = new Vector3(1f, 1f, 1f);
         transform.parent = parentPanel;

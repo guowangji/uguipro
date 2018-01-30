@@ -9,7 +9,6 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
 
 	// Use this for initialization
 	void Start () {
-        //GetComponent<Dropdown>().op
         GetComponent<Dropdown>().onValueChanged.AddListener(ClickDropdown);//Dropdown List
     }
 
@@ -24,7 +23,6 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
         if (pointerUp&&transform.Find("Dropdown List") && transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta.y!=106)
         {
             pointerUp = false;
-            Debug.Log("sda" + transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta.y);
             Vector2 size = transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta;
             size.y = 106;
             transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta = size;
