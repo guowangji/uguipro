@@ -24,6 +24,7 @@ public class NeuralNetwork : MonoBehaviour {
         {
             Transform GridChild = (Instantiate(Resources.Load("UGUI/GridChild", typeof(GameObject))) as GameObject).transform;
         GridChild.SetParent(DrawPanel.transform);
+            GridChild.name = "GridChild" + (cellListDic.Count+1);
         GridChild.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0,0,0);
         GridChild.localScale = new Vector3(1, 1, 1);
             cellListDic.Add(cellListDic.Count, GridChild.GetComponent<CellPosList>());

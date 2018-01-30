@@ -125,7 +125,15 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
                 return;
         }
         PointerUp();
+        //print("dsaaass"+ GetComponentInChildren<Text>().text);
         transfLast.Find("Button").Find("Text").GetComponent<Text>().text = GetComponentInChildren<Text>().text;
+        if (GetComponentInChildren<Text>().text.Equals("Neural Network")) {
+            foreach (Transform child in ClassificationSteps.classificationSteps.step2.transform.Find("DrawPanel"))
+            {
+                child.gameObject.SetActive(false);
+            }
+            ClassificationSteps.classificationSteps.step2.transform.Find("DrawPanel").Find("NeuralNetwork").gameObject.SetActive(true);
+        }
         gameObject.SetActive(false);
     }
 

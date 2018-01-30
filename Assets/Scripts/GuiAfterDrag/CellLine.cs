@@ -6,14 +6,13 @@ public class CellLine : MonoBehaviour {
 
     public GameObject start, end;
     LineRenderer line;
-
     private void Start()
     {
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         //设置线的宽度
-        line.startWidth = 0.1f;
-        line.endWidth = 0.1f;
+        line.startWidth = 0.03f;
+        line.endWidth = 0.03f;
 
         StartCoroutine(waitme());
     }
@@ -21,7 +20,8 @@ public class CellLine : MonoBehaviour {
 
     IEnumerator waitme()
     {
-        yield return new WaitForSeconds(0.5f);
+        //yield return 0;
+        yield return new WaitForSeconds(0.01f);
         if (start && end)
             isRead = true;
         else
@@ -38,19 +38,22 @@ public class CellLine : MonoBehaviour {
         if (!isRead)
             return;
 
-        if (updateTime < 10)
-        {
-            updateTime++;
-            return;
-        }
-        else updateTime = 0;
+        //卡的话少刷几次
+        //if (updateTime < 3)
+        //{
+        //    updateTime++;
+        //    return;
+        //}
+        //else updateTime = 0;
 
         if (!start || !end)
         {
             Destroy(gameObject);
             return;
         }
+        if(line.GetPosition(0)!= start.transform.position)
         line.SetPosition(0, start.transform.position);
+        if (line.GetPosition(1) != end.transform.position)
         line.SetPosition(1, end.transform.position);
     }
 

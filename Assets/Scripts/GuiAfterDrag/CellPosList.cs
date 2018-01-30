@@ -7,27 +7,37 @@ public class CellPosList : MonoBehaviour {
 
      public Dictionary<int, Cell> cellDic = new Dictionary<int, Cell>();
     public Button Add, Subtract;
-	// Use this for initialization
-	void Start () {
+    int numList;
+    // Use this for initialization
+    void Start () {
         Add.onClick.AddListener(AddCell);
         Subtract.onClick.AddListener(SubtractCell);
         cellDic.Add(0,transform.Find("CellPanel1").GetComponent<Cell>());
         cellDic.Add(1, transform.Find("CellPanel2").GetComponent<Cell>());
-        //if (gameObject.name.Equals("GridChild1"))
+        numList = int.Parse(gameObject.name.Substring(9, 1));
         //    NeuralNetwork.cellListDic[1].
-            StartCoroutine(waitme());
+        StartCoroutine(waitme());
     }
-
 
     IEnumerator waitme()
     {
-        yield return new WaitForSeconds(0.5f);
-        if (gameObject.name.Equals("GridChild2"))
+        yield return new WaitForSeconds(0.01f);
+        if (gameObject.name.Equals("GridChild1"))
+            yield break;
+        
+        if (NeuralNetwork.cellListDic[numList - 2].cellDic.Count < 2)
+        {
+            print("lost Dic");
+            StartCoroutine(waitme());
+        }
+            
+
+        if (numList > 1)
         {
             //NeuralNetwork.cellListDic[0].cellDic[0]
-            foreach (var item1 in NeuralNetwork.cellListDic[0].cellDic)
+            foreach (var item1 in NeuralNetwork.cellListDic[numList-2].cellDic)
             {
-                
+
                 foreach (var item2 in cellDic)
                 {
                     Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
@@ -38,23 +48,7 @@ public class CellPosList : MonoBehaviour {
                 }
             }
         }
-        if (gameObject.name.Equals("GridChild3"))
-        {
-            //NeuralNetwork.cellListDic[0].cellDic[0]
-            foreach (var item1 in NeuralNetwork.cellListDic[1].cellDic)
-            {
 
-                foreach (var item2 in cellDic)
-                {
-                    Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
-                    cellLine.SetParent(item2.Value.transform);
-
-                    cellLine.gameObject.GetComponent<CellLine>().start = item1.Value.transform.Find("cell").gameObject;
-                    cellLine.gameObject.GetComponent<CellLine>().end = item2.Value.transform.Find("cell").gameObject;
-
-                }
-            }
-        }
     }
 
     // Update is called once per frame
@@ -65,6 +59,26 @@ public class CellPosList : MonoBehaviour {
         Cell.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,0);
         Cell.localScale = new Vector3(1, 1, 1);
             cellDic.Add(cellDic.Count, Cell.GetComponent<Cell>());
+
+            if(NeuralNetwork.cellListDic.Count> numList)
+            foreach (var item3 in NeuralNetwork.cellListDic[numList].cellDic)
+            {
+                Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
+                cellLine.SetParent(Cell);
+                cellLine.gameObject.GetComponent<CellLine>().start = item3.Value.transform.Find("cell").gameObject;
+                cellLine.gameObject.GetComponent<CellLine>().end = Cell.Find("cell").gameObject;
+            }
+            if (numList > 1)
+            {
+                foreach (var item4 in NeuralNetwork.cellListDic[numList - 2].cellDic)
+                {
+                    Transform cellLine = (Instantiate(Resources.Load("UGUI/CellLine", typeof(GameObject))) as GameObject).transform;
+                    cellLine.SetParent(Cell);
+                    cellLine.gameObject.GetComponent<CellLine>().start = item4.Value.transform.Find("cell").gameObject;
+                    cellLine.gameObject.GetComponent<CellLine>().end = Cell.Find("cell").gameObject;
+                }
+            }
+
     }
     }
 
