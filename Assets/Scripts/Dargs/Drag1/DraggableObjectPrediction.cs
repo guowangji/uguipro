@@ -73,7 +73,8 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
         {
             ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable=false;
            GetComponentInChildren<Text>().text = "";
-            if(DraggableObjectScene.predictionSave)
+            GetComponent<Image>().color = new Color(255 / 255, 1, 1, 55/255f);
+            if (DraggableObjectScene.predictionSave)
             DraggableObjectScene.predictionSave.SetActive(true);
             foreach (Transform child in ClassificationSteps.classificationSteps.step2.transform.Find("DrawPanel"))
             {

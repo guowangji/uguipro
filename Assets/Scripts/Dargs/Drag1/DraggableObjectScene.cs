@@ -143,6 +143,8 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
         PointerUp();
         //print("dsaaass"+ GetComponentInChildren<Text>().text);
         transfLast.Find("Button").Find("Text").GetComponent<Text>().text = GetComponentInChildren<Text>().text;
+        transfLast.Find("Button").GetComponent<Image>().color=new Color(255/255,1,1,1);
+
         if (GetComponentInChildren<Text>().text.Equals("Neural Network")) {
             foreach (Transform child in ClassificationSteps.classificationSteps.step2.transform.Find("DrawPanel"))
             {

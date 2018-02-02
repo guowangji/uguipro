@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 1084429144186786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -30}
-  m_LocalScale: {x: 25, y: 25, z: 0}
+  m_LocalScale: {x: 32, y: 32, z: 0}
   m_Children: []
   m_Father: {fileID: 224251339902818436}
   m_RootOrder: 0
@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 1971166683317456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -30}
-  m_LocalScale: {x: 25, y: 25, z: 0}
+  m_LocalScale: {x: 35, y: 35, z: 0}
   m_Children: []
   m_Father: {fileID: 224407896347909444}
   m_RootOrder: 0
@@ -213,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 1984826525095894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -30}
-  m_LocalScale: {x: 25, y: 25, z: 0}
+  m_LocalScale: {x: 35, y: 35, z: 0}
   m_Children: []
   m_Father: {fileID: 224283847034505562}
   m_RootOrder: 0
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 1087107024147298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -30}
-  m_LocalScale: {x: 25, y: 25, z: 0}
+  m_LocalScale: {x: 32, y: 32, z: 0}
   m_Children: []
   m_Father: {fileID: 224226114255733554}
   m_RootOrder: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 2
   m_StartAxis: 1
-  m_CellSize: {x: 80, y: 50}
+  m_CellSize: {x: 80, y: 84.9}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 1
