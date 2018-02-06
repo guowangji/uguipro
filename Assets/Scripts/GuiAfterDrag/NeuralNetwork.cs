@@ -11,6 +11,7 @@ public class NeuralNetwork : MonoBehaviour {
     public static Dictionary<int, CellPosList> cellListDic = new Dictionary<int, CellPosList>();
     // Use this for initialization
     void Start () {
+        cellListDic = new Dictionary<int, CellPosList>();
         neuralNetwork = this;
         addBtn.onClick.AddListener(AddGridChild);
         subtract.onClick.AddListener(SubtractCell);

@@ -80,7 +80,7 @@ public class DraggableObjectScene : MonoBehaviour, IDragHandler, IPointerDownHan
         myPos = transform.GetComponent<RectTransform>().position;
         transform.SetParent(btnTopPanel);
         //缩小
-        transform.localScale = new Vector3(0.7f, 0.7f, 1f);
+        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void OnPointerUp(PointerEventData eventData)

@@ -9,7 +9,7 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     Vector2 myPivot;
     Vector3 myPos;
     Transform btnTopPanel,parentPanel;
-    bool notDragOut = true;
+    bool isDragOut = false;
 
     Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
 
@@ -63,14 +63,20 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
 
         transform.parent = btnTopPanel;
         //缩小
-        transform.localScale = new Vector3(0.7f, 0.7f, 1f);
+        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         rightOrLeftMouse --;
-        if (!notDragOut)
+        if (isDragOut)
         {
+            isDragOut = false;
+            if(transform.position == myPos)
+            {
+                PointerUp();
+                return;
+            }
             ClassificationSteps.classificationSteps.lineBtn3.GetComponent<Toggle>().interactable=false;
            GetComponentInChildren<Text>().text = "";
             GetComponent<Image>().color = new Color(255 / 255, 1, 1, 55/255f);
@@ -106,7 +112,7 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
         //gameObject.SetActive(false);
         if (collider.name.Equals("TextPrediction"))
         {
-            notDragOut = true;
+            isDragOut = false;
         }
 
     }
@@ -114,7 +120,9 @@ public class DraggableObjectPrediction : MonoBehaviour, IDragHandler, IPointerDo
     {
         if (collider.name.Equals("TextPrediction"))
         {
-            notDragOut = false;
+
+            print("dsadaaa");
+            isDragOut = true;
         }
 
         //if (collider.name.Equals("TextX-axis")|| collider.name.Equals("TextY-axis"))

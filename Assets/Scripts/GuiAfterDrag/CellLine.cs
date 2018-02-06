@@ -11,8 +11,8 @@ public class CellLine : MonoBehaviour {
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         //设置线的宽度
-        line.startWidth = 0.03f;
-        line.endWidth = 0.03f;
+        line.startWidth = 0.01f;
+        line.endWidth = 0.01f;
 
         StartCoroutine(waitme());
     }
