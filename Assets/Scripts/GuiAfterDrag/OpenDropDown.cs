@@ -10,6 +10,7 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
     // Use this for initialization
     void Start () {
         GetComponent<Dropdown>().onValueChanged.AddListener(ClickDropdown);//Dropdown List
+        transform.Find("Label").GetComponent<Text>().text = "Linear ▾";
     }
 
     bool pointerUp = false;
@@ -24,7 +25,7 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
         {
             pointerUp = false;
             Vector2 size = transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta;
-            size.y = 176;
+            size.y = 239f;
             transform.Find("Dropdown List").gameObject.GetComponent<RectTransform>().sizeDelta = size;
 
             foreach (Transform tra in transform.Find("Dropdown List").Find("Viewport").Find("Content"))
@@ -41,8 +42,9 @@ public class OpenDropDown : MonoBehaviour, IPointerUpHandler
         //Debug.Log("sda"+ index);//23.234.217
         indexChoose = index;
         print(index+"asssaa" + transform.Find("Dropdown List").Find("Viewport").Find("Content").GetChild(index+1).name);
+        transform.Find("Label").GetComponent<Text>().text = transform.Find("Label").GetComponent<Text>().text + " ▾";
 
-       
+
 
     }
 
